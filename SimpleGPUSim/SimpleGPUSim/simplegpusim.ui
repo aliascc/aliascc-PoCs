@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SimpleGPUSimClass</class>
+ <widget class="QMainWindow" name="SimpleGPUSimClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>SimpleGPUSim</string>
+  </property>
+  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>600</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuExamples">
+    <property name="title">
+     <string>Examples</string>
+    </property>
+    <addaction name="actionWolf"/>
+    <addaction name="actionSingleSphere"/>
+    <addaction name="actionMultipleSpheres"/>
+   </widget>
+   <widget class="QMenu" name="menuThreads">
+    <property name="title">
+     <string>Threads</string>
+    </property>
+    <addaction name="actionSingleThreaded"/>
+    <addaction name="actionHardwareConcurrency"/>
+   </widget>
+   <widget class="QMenu" name="menuHSR_VSD">
+    <property name="title">
+     <string>HSR / VSD</string>
+    </property>
+    <addaction name="actionEnableDisableZBufferTest"/>
+    <addaction name="actionEnableDisableBackFaceCulling"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuExamples"/>
+   <addaction name="menuThreads"/>
+   <addaction name="menuHSR_VSD"/>
+  </widget>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionWolf">
+   <property name="text">
+    <string>Wolf</string>
+   </property>
+  </action>
+  <action name="actionSingleSphere">
+   <property name="text">
+    <string>Single Sphere</string>
+   </property>
+  </action>
+  <action name="actionMultipleSpheres">
+   <property name="text">
+    <string>Multiple Spheres</string>
+   </property>
+  </action>
+  <action name="actionSingleThreaded">
+   <property name="text">
+    <string>Single Threaded</string>
+   </property>
+  </action>
+  <action name="actionHardwareConcurrency">
+   <property name="text">
+    <string>Hardware Concurrency</string>
+   </property>
+  </action>
+  <action name="actionEnableDisableZBufferTest">
+   <property name="text">
+    <string>Enable/Disable ZBuffer Test</string>
+   </property>
+  </action>
+  <action name="actionEnableDisableBackFaceCulling">
+   <property name="text">
+    <string>Enable/Disable Back Face Culling</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="simplegpusim.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>actionExit</sender>
+   <signal>triggered()</signal>
+   <receiver>SimpleGPUSimClass</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>299</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

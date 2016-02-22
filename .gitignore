@@ -31,7 +31,8 @@
 *.user
 
 # PoCs Ignores
-#*/Debug
+*/*/x64
+*/*/GeneratedFiles 
 *.opensdf
 *.sdf
 *.suo

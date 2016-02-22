@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>moc;h;cpp</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Debug">
+      <UniqueIdentifier>{acced6dc-67ef-40e1-8095-bc596093a36f}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Release">
+      <UniqueIdentifier>{b7f4e257-8602-4a3d-a403-a1a22a55dea1}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Examples">
+      <UniqueIdentifier>{ec068c5f-1503-46db-ac0d-168a3298681b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GeneratedFiles\Debug\moc_simplegpusim.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_simplegpusim.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\qrc_simplegpusim.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="simplegpusim.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="MathHelper.cpp" />
+    <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="MeshData.cpp" />
+    <ClCompile Include="SimGraphics.cpp" />
+    <ClCompile Include="ThreadPool.cpp" />
+    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="Viewer.cpp" />
+    <ClCompile Include="RenderTime.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="simplegpusim.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="simplegpusim.qrc">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="simplegpusim.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GeneratedFiles\ui_simplegpusim.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="MathHelper.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="MeshData.h" />
+    <ClInclude Include="SimGraphics.h" />
+    <ClInclude Include="SimGraphicsDefs.h" />
+    <ClInclude Include="ThreadPool.h" />
+    <ClInclude Include="Timer.h" />
+    <ClInclude Include="Viewer.h" />
+    <ClInclude Include="RenderTime.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="SphereMesh.txt">
+      <Filter>Examples</Filter>
+    </Text>
+    <Text Include="WolfMesh.txt">
+      <Filter>Examples</Filter>
+    </Text>
+    <Text Include="example_sphere_multiple.txt">
+      <Filter>Examples</Filter>
+    </Text>
+    <Text Include="example_sphere_single.txt">
+      <Filter>Examples</Filter>
+    </Text>
+    <Text Include="example_wolf.txt">
+      <Filter>Examples</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
