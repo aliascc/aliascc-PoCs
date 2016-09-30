@@ -32,9 +32,16 @@
 
 # PoCs Ignores
 */*/x64
+*/*/Debug
 */*/GeneratedFiles 
 *.opensdf
 *.sdf
 *.suo
 *.v12.suo
 *.user
+*/.vs
+*.VC.db
+*.ilk
+*.pdb
+*.vcxproj
+*.vcxproj.filters
