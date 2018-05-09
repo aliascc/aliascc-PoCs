@@ -29,20 +29,20 @@ RenderTime::RenderTime()
 
 void RenderTime::AddTime(double ms)
 {
-	uint32_t size = m_TimeHistory.size();
-	if (size >= NUM_FRAME_SAVED)
-	{
-		m_TimeHistory.pop_front();
-	}
+    uint32_t size = m_TimeHistory.size();
+    if (size >= NUM_FRAME_SAVED)
+    {
+        m_TimeHistory.pop_front();
+    }
 
-	m_TimeHistory.push_back(ms);
+    m_TimeHistory.push_back(ms);
 
-	double sumMS = 0;
-	for(double msTime : m_TimeHistory)
-	{
-		sumMS += msTime;
-	}
-	sumMS /= (double)size;
+    double sumMS = 0;
+    for(double msTime : m_TimeHistory)
+    {
+        sumMS += msTime;
+    }
+    sumMS /= (double)size;
 
-	m_AverageTime = sumMS;
+    m_AverageTime = sumMS;
 }

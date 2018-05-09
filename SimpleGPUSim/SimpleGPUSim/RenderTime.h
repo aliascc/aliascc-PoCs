@@ -37,38 +37,38 @@
 /// </summary>
 class RenderTime
 {
-	private:
+    private:
 
-		/// <summary>
-		/// History of Render Times
-		/// </summary>
-		std::list<double> m_TimeHistory;
+        /// <summary>
+        /// History of Render Times
+        /// </summary>
+        std::list<double> m_TimeHistory;
 
-		/// <summary>
-		/// Average Frame Time
-		/// </summary>
-		double m_AverageTime = 0.0;
+        /// <summary>
+        /// Average Frame Time
+        /// </summary>
+        double m_AverageTime = 0.0;
 
-	public:
+    public:
 
-		/// <summary>
-		/// Render Time Constructor
-		/// </summary>
-		RenderTime();
+        /// <summary>
+        /// Render Time Constructor
+        /// </summary>
+        RenderTime();
 
-		/// <summary>
-		/// Add a Render Time 
-		/// </summary>
-		/// <param name="ms">Render Time to add in ms</param>
-		void AddTime(double ms);
+        /// <summary>
+        /// Add a Render Time 
+        /// </summary>
+        /// <param name="ms">Render Time to add in ms</param>
+        void AddTime(double ms);
 
-		/// <summary>
-		/// Get the Average Render Time
-		/// </summary>
-		inline double GetAverageTime() const
-		{
-			return m_AverageTime;
-		}
+        /// <summary>
+        /// Get the Average Render Time
+        /// </summary>
+        inline double GetAverageTime() const
+        {
+            return m_AverageTime;
+        }
 };
 
 #endif

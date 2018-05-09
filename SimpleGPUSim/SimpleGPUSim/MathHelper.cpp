@@ -37,9 +37,9 @@ const XMFLOAT3 XMFLOAT3FWRLH(0.0f, 0.0f, 1.0f);
 
 
 const XMFLOAT4X4 XMFLOAT4X4IDENTITY(1.0f, 0.0f, 0.0f, 0.0f,
-																		0.0f, 1.0f, 0.0f, 0.0f,
-																		0.0f, 0.0f, 1.0f, 0.0f,
-																		0.0f, 0.0f, 0.0f, 1.0f);
+                                                                        0.0f, 1.0f, 0.0f, 0.0f,
+                                                                        0.0f, 0.0f, 1.0f, 0.0f,
+                                                                        0.0f, 0.0f, 0.0f, 1.0f);
 
 /*********************
 *   Variables Defs   *
@@ -51,21 +51,21 @@ std::default_random_engine gRandomGenerator((std::random_device())());
 *********************/
 float GetRandomFloat(float min, float max)
 {
-	std::uniform_real_distribution<float> disRand(min, max);
+    std::uniform_real_distribution<float> disRand(min, max);
 
-	return disRand(gRandomGenerator);
+    return disRand(gRandomGenerator);
 }
 
 int32_t GetRandomInt(int32_t min, int32_t max)
 {
-	std::uniform_int_distribution<int32_t> disRand(min, max);
+    std::uniform_int_distribution<int32_t> disRand(min, max);
 
-	return disRand(gRandomGenerator);
+    return disRand(gRandomGenerator);
 }
 
 uint32_t GetRandomUInt(uint32_t min, uint32_t max)
 {
-	std::uniform_int_distribution<uint32_t> disRand(min, max);
+    std::uniform_int_distribution<uint32_t> disRand(min, max);
 
-	return disRand(gRandomGenerator);
+    return disRand(gRandomGenerator);
 }

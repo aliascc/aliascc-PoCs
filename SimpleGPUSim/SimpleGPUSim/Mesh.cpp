@@ -35,60 +35,60 @@ Mesh::Mesh()
 
 void Mesh::Load(const std::string& meshFile)
 {
-	std::string line;
-	uint32_t count = 0;
+    std::string line;
+    uint32_t count = 0;
 
-	m_VtxBuffer.clear();
-	m_IdxBuffer.clear();
+    m_VtxBuffer.clear();
+    m_IdxBuffer.clear();
 
-	std::ifstream exampleStream(meshFile);
+    std::ifstream exampleStream(meshFile);
 
-	//Get Size of Vertex Buffer and Index Buffer
-	if (std::getline(exampleStream, line))
-	{
-		std::istringstream iss(line);
-		uint32_t vtxSize;
-		uint32_t idxSize;
+    //Get Size of Vertex Buffer and Index Buffer
+    if (std::getline(exampleStream, line))
+    {
+        std::istringstream iss(line);
+        uint32_t vtxSize;
+        uint32_t idxSize;
 
-		if (!(iss >> vtxSize >> idxSize))
-		{
-			return;
-		}
+        if (!(iss >> vtxSize >> idxSize))
+        {
+            return;
+        }
 
-		m_VtxBuffer.resize(vtxSize);
-		m_IdxBuffer.resize(idxSize);
-	}
-	else
-	{
-		return;
-	}
+        m_VtxBuffer.resize(vtxSize);
+        m_IdxBuffer.resize(idxSize);
+    }
+    else
+    {
+        return;
+    }
 
-	//Load Vertex
-	count = 0;
-	while (count < m_VtxBuffer.size() && std::getline(exampleStream, line))
-	{
-		std::istringstream iss(line);
-		Vertex& vtx = m_VtxBuffer[count];
+    //Load Vertex
+    count = 0;
+    while (count < m_VtxBuffer.size() && std::getline(exampleStream, line))
+    {
+        std::istringstream iss(line);
+        Vertex& vtx = m_VtxBuffer[count];
 
-		if (!(iss >> vtx.m_Position.x >> vtx.m_Position.y >> vtx.m_Position.z >> vtx.m_Normal.x >> vtx.m_Normal.y >> vtx.m_Normal.z))
-		{
-			return;
-		}
+        if (!(iss >> vtx.m_Position.x >> vtx.m_Position.y >> vtx.m_Position.z >> vtx.m_Normal.x >> vtx.m_Normal.y >> vtx.m_Normal.z))
+        {
+            return;
+        }
 
-		++count;
-	}
+        ++count;
+    }
 
-	//Load Index
-	count = 0;
-	while (count < m_IdxBuffer.size() && std::getline(exampleStream, line))
-	{
-		std::istringstream iss(line);
+    //Load Index
+    count = 0;
+    while (count < m_IdxBuffer.size() && std::getline(exampleStream, line))
+    {
+        std::istringstream iss(line);
 
-		if (!(iss >> m_IdxBuffer[count]))
-		{
-			return;
-		}
+        if (!(iss >> m_IdxBuffer[count]))
+        {
+            return;
+        }
 
-		++count;
-	}
+        ++count;
+    }
 }

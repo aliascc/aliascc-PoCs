@@ -25,72 +25,72 @@
 *********************/
 ThreadPool::ThreadPool()
 {
-	m_MaxThreads = std::thread::hardware_concurrency();
+    m_MaxThreads = std::thread::hardware_concurrency();
 
-	for (uint32_t i = 0; i < m_MaxThreads; i++)
-	{
-		m_Pool.emplace_back(std::thread(&ThreadPool::Run, this));
-	}
+    for (uint32_t i = 0; i < m_MaxThreads; i++)
+    {
+        m_Pool.emplace_back(std::thread(&ThreadPool::Run, this));
+    }
 }
 
 ThreadPool::~ThreadPool()
 {
-	Stop();
+    Stop();
 }
 
 void ThreadPool::Run()
 {
-	TaskFunction task;
-	while (true)
-	{
-		{
-			std::unique_lock<std::mutex> lock(m_PoolMutex);
+    TaskFunction task;
+    while (true)
+    {
+        {
+            std::unique_lock<std::mutex> lock(m_PoolMutex);
 
-			m_Conditional.wait(lock, [this]{return !m_TaskQueue.empty() || !m_IsRunning; });
+            m_Conditional.wait(lock, [this]{return !m_TaskQueue.empty() || !m_IsRunning; });
 
-			if (m_TaskQueue.empty() && !m_IsRunning)
-			{
-				break;
-			}
+            if (m_TaskQueue.empty() && !m_IsRunning)
+            {
+                break;
+            }
 
-			task = m_TaskQueue.front();
+            task = m_TaskQueue.front();
 
-			m_TaskQueue.pop();
-		}
+            m_TaskQueue.pop();
+        }
 
-		task();
-	}
+        task();
+    }
 }
 
 void ThreadPool::AddTask(TaskFunction task)
 {
-	{
-		std::unique_lock<std::mutex> lock(m_PoolMutex);
-		
-		m_TaskQueue.push(task);
-	}
+    {
+        std::unique_lock<std::mutex> lock(m_PoolMutex);
+        
+        m_TaskQueue.push(task);
+    }
 
-	m_Conditional.notify_one();
+    m_Conditional.notify_one();
 }
 
 void ThreadPool::Stop()
 {
-	if (!m_IsRunning)
-	{
-		return;
-	}
+    if (!m_IsRunning)
+    {
+        return;
+    }
 
-	{
-		std::unique_lock<std::mutex> lock(m_PoolMutex);
+    {
+        std::unique_lock<std::mutex> lock(m_PoolMutex);
 
-		m_IsRunning = false;
-	}
+        m_IsRunning = false;
+    }
 
-	m_Conditional.notify_all();
+    m_Conditional.notify_all();
 
-	for (std::thread& poolThread : m_Pool)
-	{
-		poolThread.join();
-	}
-	m_Pool.clear();
+    for (std::thread& poolThread : m_Pool)
+    {
+        poolThread.join();
+    }
+    m_Pool.clear();
 }

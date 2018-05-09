@@ -38,9 +38,9 @@ class SimGraphics;
 /// </summary>
 enum class ExampleOpt : uint32_t
 {
-	SphereMultiple = 0,
-	SphereSingle,
-	Wolf
+    SphereMultiple = 0,
+    SphereSingle,
+    Wolf
 };
 
 /// <summary>
@@ -48,84 +48,84 @@ enum class ExampleOpt : uint32_t
 /// </summary>
 class MeshData
 {
-	private:
+    private:
 
-		/// <summary>
-		/// Sphere Mesh
-		/// </summary>
-		Mesh m_SphereMesh;
+        /// <summary>
+        /// Sphere Mesh
+        /// </summary>
+        Mesh m_SphereMesh;
 
-		/// <summary>
-		/// Wolf Mesh
-		/// </summary>
-		Mesh m_WolfMesh;
+        /// <summary>
+        /// Wolf Mesh
+        /// </summary>
+        Mesh m_WolfMesh;
 
-		/// <summary>
-		/// Example Render Option
-		/// </summary>
-		ExampleOpt m_ExampleOpt = ExampleOpt::Wolf;
+        /// <summary>
+        /// Example Render Option
+        /// </summary>
+        ExampleOpt m_ExampleOpt = ExampleOpt::Wolf;
 
-		/// <summary>
-		/// Example vector containing the Multiple Spheres
-		/// </summary>
-		std::vector<MeshElement> m_ExampleSphereMultiple;
+        /// <summary>
+        /// Example vector containing the Multiple Spheres
+        /// </summary>
+        std::vector<MeshElement> m_ExampleSphereMultiple;
 
-		/// <summary>
-		/// Example vector containing a Single Sphere
-		/// </summary>
-		std::vector<MeshElement> m_ExampleSphereSingle;
+        /// <summary>
+        /// Example vector containing a Single Sphere
+        /// </summary>
+        std::vector<MeshElement> m_ExampleSphereSingle;
 
-		/// <summary>
-		/// Example vector containing a Wolf
-		/// </summary>
-		std::vector<MeshElement> m_ExampleWolf;
+        /// <summary>
+        /// Example vector containing a Wolf
+        /// </summary>
+        std::vector<MeshElement> m_ExampleWolf;
 
-		/// <summary>
-		/// Loads the Example to Memory
-		/// </summary>
-		/// <param name="exampleFile">Filepath</param>
-		/// <param name="example">Example on where to load</param>
-		void LoadExample(const std::string& exampleFile, std::vector<MeshElement>& example);
+        /// <summary>
+        /// Loads the Example to Memory
+        /// </summary>
+        /// <param name="exampleFile">Filepath</param>
+        /// <param name="example">Example on where to load</param>
+        void LoadExample(const std::string& exampleFile, std::vector<MeshElement>& example);
 
-		/// <summary>
-		/// Renders the Sphere Example
-		/// </summary>
-		/// <param name="simGraphics">SimGraphics use to render</param>
-		/// <param name="sphereExample">Sphere Example</param>
-		/// <param name="rotation">Rotation to render</param>
-		void RenderSphereExample(SimGraphics& simGraphics, const std::vector<MeshElement>& sphereExample, float rotation);
+        /// <summary>
+        /// Renders the Sphere Example
+        /// </summary>
+        /// <param name="simGraphics">SimGraphics use to render</param>
+        /// <param name="sphereExample">Sphere Example</param>
+        /// <param name="rotation">Rotation to render</param>
+        void RenderSphereExample(SimGraphics& simGraphics, const std::vector<MeshElement>& sphereExample, float rotation);
 
-		/// <summary>
-		/// Renders the Wolf Example
-		/// </summary>
-		/// <param name="simGraphics">SimGraphics use to render</param>
-		/// <param name="rotation">Rotation to render</param>
-		void RenderWolfExample(SimGraphics& simGraphics, float rotation);
+        /// <summary>
+        /// Renders the Wolf Example
+        /// </summary>
+        /// <param name="simGraphics">SimGraphics use to render</param>
+        /// <param name="rotation">Rotation to render</param>
+        void RenderWolfExample(SimGraphics& simGraphics, float rotation);
 
-	public:
+    public:
 
-		/// <summary>
-		/// MeshData Constructor
-		/// </summary>
-		MeshData(const std::string& multipleSphereExample, const std::string& wolfExample, const std::string& singleSphereExample);
+        /// <summary>
+        /// MeshData Constructor
+        /// </summary>
+        MeshData(const std::string& multipleSphereExample, const std::string& wolfExample, const std::string& singleSphereExample);
 
-		/// <summary>
-		/// MeshData Destructor
-		/// </summary>
-		~MeshData();
+        /// <summary>
+        /// MeshData Destructor
+        /// </summary>
+        ~MeshData();
 
-		/// <summary>
-		/// Set which Example Render Option is to be render
-		/// </summary>
-		inline void SetExampleOpt(ExampleOpt exampleOpt)
-		{
-			m_ExampleOpt = exampleOpt;
-		}
+        /// <summary>
+        /// Set which Example Render Option is to be render
+        /// </summary>
+        inline void SetExampleOpt(ExampleOpt exampleOpt)
+        {
+            m_ExampleOpt = exampleOpt;
+        }
 
-		/// <summary>
-		/// Renders the Example
-		/// </summary>
-		/// <param name="simGraphics">SimGraphics use to render</param>
-		/// <param name="rotation">Rotation of the render</param>
-		void Render(SimGraphics &simGraphics, float rotation);
+        /// <summary>
+        /// Renders the Example
+        /// </summary>
+        /// <param name="simGraphics">SimGraphics use to render</param>
+        /// <param name="rotation">Rotation of the render</param>
+        void Render(SimGraphics &simGraphics, float rotation);
 };

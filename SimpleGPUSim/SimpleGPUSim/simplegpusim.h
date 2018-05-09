@@ -21,46 +21,62 @@
 /**********************
 *   System Includes   *
 ***********************/
-#include <QtWidgets/QMainWindow>
+#include <d3d11.h>
+#include <Windows.h>
 
 /********************
 *   Game Includes   *
 *********************/
 #include "Viewer.h"
-#include "ui_simplegpusim.h"
 
-class SimpleGPUSim : public QMainWindow
+class SimpleGPUSim
 {
-	Q_OBJECT
+    private:
 
-	private:
+        Viewer m_Viewer;
+        bool m_IsReady = false;
 
-		Ui::SimpleGPUSimClass ui;
+        HWND m_WindowHandle = nullptr;
+        ID3D11Device* m_D3dDevice = nullptr;
+        ID3D11DeviceContext* m_D3dDeviceContext = nullptr;
+        IDXGISwapChain* m_SwapChain = nullptr;
+        ID3D11RenderTargetView* m_MainRenderTargetView = nullptr;
+        WNDCLASSEX m_WC;
+        ID3D11Texture2D* m_SimulationRenderTarget = nullptr;
+        ID3D11ShaderResourceView* m_SimulationRenderSRV = nullptr;
+        uint32_t* m_SimulationBuffer = nullptr;
+        XMUINT2 m_SimulationRenderSize = {100, 100};
 
-		Viewer* m_Viewer;
+        bool m_UseMaxThreads = true;
+        bool m_UseZBuffer = true;
+        bool m_UseBackFaceCulling = true;
+        int m_MeshSelection = 0;
 
-		void paintEvent(QPaintEvent* event) override;
+        void CreateRenderTarget();
+        void CleanupRenderTarget();
+        bool CreateDeviceD3D(HWND windowHandle);
+        void CleanupDeviceD3D();
+        void RenderSimulation();
 
-	private slots:
+        bool CreateSimulationRenderTarget();
+        void CleanupSimulationRenderTarget();
 
-		void on_actionWolf_triggered();
+        bool ShowRenderSimWindow();
+        void ShowSimOptions();
+        void ShowOverlay();
 
-		void on_actionSingleSphere_triggered();
+        void CleanUp();
 
-		void on_actionMultipleSpheres_triggered();
+        static LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
-		void on_actionSingleThreaded_triggered();
+    public:
 
-		void on_actionHardwareConcurrency_triggered();
+        SimpleGPUSim();
+        ~SimpleGPUSim();
 
-		void on_actionEnableDisableZBufferTest_triggered();
+        bool Initialize();
 
-		void on_actionEnableDisableBackFaceCulling_triggered();
-
-	public:
-
-		SimpleGPUSim(QWidget *parent = 0);
-		~SimpleGPUSim();
+        void Run();
 };
 
 #endif // SIMPLEGPUSIM_H

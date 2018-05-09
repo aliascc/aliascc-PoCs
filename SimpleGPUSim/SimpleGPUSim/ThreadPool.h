@@ -41,74 +41,74 @@ typedef std::function<void()> TaskFunction;
 /// </summary>
 class ThreadPool
 {
-	private:
+    private:
 
-		/// <summary>
-		/// Thread Pool vector
-		/// </summary>
-		std::vector<std::thread> m_Pool;
+        /// <summary>
+        /// Thread Pool vector
+        /// </summary>
+        std::vector<std::thread> m_Pool;
 
-		/// <summary>
-		/// Task Queue
-		/// </summary>
-		std::queue<TaskFunction> m_TaskQueue;
+        /// <summary>
+        /// Task Queue
+        /// </summary>
+        std::queue<TaskFunction> m_TaskQueue;
 
-		/// <summary>
-		/// Pool Mutex
-		/// </summary>
-		std::mutex m_PoolMutex;
+        /// <summary>
+        /// Pool Mutex
+        /// </summary>
+        std::mutex m_PoolMutex;
 
-		/// <summary>
-		/// Max Threads available to run
-		/// </summary>
-		uint32_t m_MaxThreads = 0;
+        /// <summary>
+        /// Max Threads available to run
+        /// </summary>
+        uint32_t m_MaxThreads = 0;
 
-		/// <summary>
-		/// Is the thread pool running
-		/// </summary>
-		bool m_IsRunning = true;
+        /// <summary>
+        /// Is the thread pool running
+        /// </summary>
+        bool m_IsRunning = true;
 
-		/// <summary>
-		/// Conditional variable, waiting for a notify to run a task
-		/// </summary>
-		std::condition_variable m_Conditional;
+        /// <summary>
+        /// Conditional variable, waiting for a notify to run a task
+        /// </summary>
+        std::condition_variable m_Conditional;
 
-		/// <summary>
-		/// Thread Run Method to wait for tasks to run
-		/// </summary>
-		void Run();
+        /// <summary>
+        /// Thread Run Method to wait for tasks to run
+        /// </summary>
+        void Run();
 
-	public:
+    public:
 
-		/// <summary>
-		/// Thread Pool Constructor
-		/// </summary>
-		ThreadPool();
+        /// <summary>
+        /// Thread Pool Constructor
+        /// </summary>
+        ThreadPool();
 
-		/// <summary>
-		/// Thread Pool Destructor
-		/// </summary>
-		~ThreadPool();
+        /// <summary>
+        /// Thread Pool Destructor
+        /// </summary>
+        ~ThreadPool();
 
-		/// <summary>
-		/// Get Max Threads the Pool can run simultaneously
-		/// </summary>
-		inline uint32_t GetMaxThreads() const
-		{
-			return m_MaxThreads;
-		}
+        /// <summary>
+        /// Get Max Threads the Pool can run simultaneously
+        /// </summary>
+        inline uint32_t GetMaxThreads() const
+        {
+            return m_MaxThreads;
+        }
 
-		/// <summary>
-		/// Add a Task for the thread pool to execute
-		/// </summary>
-		/// <param name="task">Task to add to the thread pool</param>
-		void AddTask(TaskFunction task);
+        /// <summary>
+        /// Add a Task for the thread pool to execute
+        /// </summary>
+        /// <param name="task">Task to add to the thread pool</param>
+        void AddTask(TaskFunction task);
 
 
-		/// <summary>
-		/// Stop the thread pool from running
-		/// </summary>
-		void Stop();
+        /// <summary>
+        /// Stop the thread pool from running
+        /// </summary>
+        void Stop();
 };
 
 #endif

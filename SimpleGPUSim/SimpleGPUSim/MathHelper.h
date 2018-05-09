@@ -88,13 +88,13 @@ extern uint32_t GetRandomUInt(uint32_t min, uint32_t max);
 /// <param name="lookAt">View Matrix Result</param>
 inline void CreateLookAtLH(const XMFLOAT3& cameraPosition, const XMFLOAT3& cameraTarget, const XMFLOAT3& cameraUP, XMFLOAT4X4& lookAt)
 {
-	XMVECTOR cp = XMLoadFloat3(&cameraPosition);
-	XMVECTOR ct = XMLoadFloat3(&cameraTarget);
-	XMVECTOR cu = XMLoadFloat3(&cameraUP);
+    XMVECTOR cp = XMLoadFloat3(&cameraPosition);
+    XMVECTOR ct = XMLoadFloat3(&cameraTarget);
+    XMVECTOR cu = XMLoadFloat3(&cameraUP);
 
-	XMMATRIX xmMatrix = XMMatrixLookAtLH(cp, ct, cu);
+    XMMATRIX xmMatrix = XMMatrixLookAtLH(cp, ct, cu);
 
-	XMStoreFloat4x4(&lookAt, xmMatrix);
+    XMStoreFloat4x4(&lookAt, xmMatrix);
 }
 
 /// <summary>
@@ -106,9 +106,9 @@ inline void CreateLookAtLH(const XMFLOAT3& cameraPosition, const XMFLOAT3& camer
 /// <param name="farZ">Far Z Depth</param>
 inline void CreatePrespectiveFovLH(float fov, float aspectRatio, float nearZ, float farZ, XMFLOAT4X4& proj)
 {
-	XMMATRIX xmMatrix = XMMatrixPerspectiveFovLH(fov, aspectRatio, nearZ, farZ);
+    XMMATRIX xmMatrix = XMMatrixPerspectiveFovLH(fov, aspectRatio, nearZ, farZ);
 
-	XMStoreFloat4x4(&proj, xmMatrix);
+    XMStoreFloat4x4(&proj, xmMatrix);
 }
 
 /// <summary>
@@ -120,7 +120,7 @@ inline void CreatePrespectiveFovLH(float fov, float aspectRatio, float nearZ, fl
 /// <returns>minimum number</returns>
 inline float Minimum(float a, float b, float c)
 {
-	return std::min(a, std::min(b, c));
+    return std::min(a, std::min(b, c));
 }
 
 /// <summary>
@@ -132,7 +132,7 @@ inline float Minimum(float a, float b, float c)
 /// <returns>maximum number</returns>
 inline float Maximum(float a, float b, float c)
 {
-	return std::max(a, std::max(b, c));
+    return std::max(a, std::max(b, c));
 }
 
 /// <summary>
@@ -145,19 +145,19 @@ inline float Maximum(float a, float b, float c)
 /// <returns>maximum number</returns>
 inline float EdgeFunction(const XMFLOAT4& v1, const XMFLOAT4& v2, const XMFLOAT4& v3)
 {
-	//CCW: EAB(P)=(A.x−B.x)∗(P.y−A.y)−(A.y−B.y)∗(P.x−A.x)
-	//float edge = (v1.x - v2.x) * (v3.y - v1.y) - (v1.y - v2.y) * (v3.x - v1.x);
+    //CCW: EAB(P)=(A.x−B.x)∗(P.y−A.y)−(A.y−B.y)∗(P.x−A.x)
+    //float edge = (v1.x - v2.x) * (v3.y - v1.y) - (v1.y - v2.y) * (v3.x - v1.x);
 
-	//CW: EAB(P) = (P.x−A.x)∗(B.y−A.y)−(P.y−A.y)∗(B.x−A.x)
-	float edge = (v3.x - v1.x) * (v2.y - v1.y) - (v3.y - v1.y) * (v2.x - v1.x);
+    //CW: EAB(P) = (P.x−A.x)∗(B.y−A.y)−(P.y−A.y)∗(B.x−A.x)
+    float edge = (v3.x - v1.x) * (v2.y - v1.y) - (v3.y - v1.y) * (v2.x - v1.x);
 
-	return edge;
+    return edge;
 }
 
 template<typename T>
 T clamp(const T &val, const T &min, const T &max)
 {
-	return std::max(min, std::min(max, val));
+    return std::max(min, std::min(max, val));
 }
 
 #endif

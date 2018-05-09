@@ -37,26 +37,26 @@
 /// </summary>
 struct Mesh
 {
-	/// <summary>
-	/// Vertex Buffer of the Mesh
-	/// </summary>
-	std::vector<Vertex> m_VtxBuffer;
+    /// <summary>
+    /// Vertex Buffer of the Mesh
+    /// </summary>
+    std::vector<Vertex> m_VtxBuffer;
 
-	/// <summary>
-	/// Index Buffer of the Mesh
-	/// </summary>
-	std::vector<uint32_t> m_IdxBuffer;
+    /// <summary>
+    /// Index Buffer of the Mesh
+    /// </summary>
+    std::vector<uint32_t> m_IdxBuffer;
 
-	/// <summary>
-	/// Mesh Constructor
-	/// </summary>
-	Mesh();
+    /// <summary>
+    /// Mesh Constructor
+    /// </summary>
+    Mesh();
 
-	/// <summary>
-	/// Load the Mesh to memory
-	/// </summary>
-	/// <param name="meshFile">Mesh File</param>
-	void Load(const std::string& meshFile);
+    /// <summary>
+    /// Load the Mesh to memory
+    /// </summary>
+    /// <param name="meshFile">Mesh File</param>
+    void Load(const std::string& meshFile);
 };
 
 #endif

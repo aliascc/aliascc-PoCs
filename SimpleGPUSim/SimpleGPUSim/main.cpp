@@ -15,13 +15,27 @@
 * limitations under the License.
 */
 
+/**********************
+*   System Includes   *
+***********************/
+#include <iostream>
+
+/********************
+*   Game Includes   *
+*********************/
 #include "simplegpusim.h"
-#include <QtWidgets/QApplication>
 
 int main(int argc, char *argv[])
 {
-	QApplication a(argc, argv);
-	SimpleGPUSim w;
-	w.show();
-	return a.exec();
+    SimpleGPUSim app;
+    if (!app.Initialize())
+    {
+        std::cerr << "Error initializing Simulation";
+
+        return EXIT_FAILURE;
+    }
+
+    app.Run();
+
+    return EXIT_SUCCESS;
 }

@@ -23,16 +23,13 @@
 #include "Color.h"
 #include "MathHelper.h"
 
-#define WINDOW_HEIGHT	1024
-#define WINDOW_WIDTH	768
-
 /// <summary>
 /// Enum that define options on threads to run
 /// </summary>
 enum class MaxThreads : uint32_t
 {
-	SingleThreads = 0,
-	HardwareConcurrency
+    SingleThreads = 0,
+    HardwareConcurrency
 };
 
 /// <summary>
@@ -40,15 +37,15 @@ enum class MaxThreads : uint32_t
 /// </summary>
 struct MeshElement
 {
-	/// <summary>
-	/// Mesh Position
-	/// </summary>
-	XMFLOAT3 m_Position;
+    /// <summary>
+    /// Mesh Position
+    /// </summary>
+    XMFLOAT3 m_Position;
 
-	/// <summary>
-	/// Mesh Color
-	/// </summary>
-	Color m_Color;
+    /// <summary>
+    /// Mesh Color
+    /// </summary>
+    Color m_Color;
 };
 
 /// <summary>
@@ -56,40 +53,40 @@ struct MeshElement
 /// </summary>
 struct Vertex
 {
-	/// <summary>
-	/// Position of the Vertex
-	/// </summary>
-	XMFLOAT3 m_Position;
+    /// <summary>
+    /// Position of the Vertex
+    /// </summary>
+    XMFLOAT3 m_Position;
 
-	/// <summary>
-	/// Normal of the Vertex
-	/// </summary>
-	XMFLOAT3 m_Normal;
+    /// <summary>
+    /// Normal of the Vertex
+    /// </summary>
+    XMFLOAT3 m_Normal;
 
-	/// <summary>
-	/// Color of the Vertex
-	/// </summary>
-	Color m_Color;
+    /// <summary>
+    /// Color of the Vertex
+    /// </summary>
+    Color m_Color;
 
-	/// <summary>
-	/// Vertex Constructor
-	/// </summary>
-	Vertex()
-	{
-	}
+    /// <summary>
+    /// Vertex Constructor
+    /// </summary>
+    Vertex()
+    {
+    }
 
-	/// <summary>
-	/// Vertex Constructor
-	/// </summary>
-	/// <param name="pos">Position of the vertex</param>
-	/// <param name="normal">Normal of the vertex</param>
-	/// <param name="color">Color of the vertex</param>
-	Vertex(const XMFLOAT3& pos, const XMFLOAT3& normal, const Color& color)
-		: m_Position(pos)
-		, m_Normal(normal)
-		, m_Color(color)
-	{
-	}
+    /// <summary>
+    /// Vertex Constructor
+    /// </summary>
+    /// <param name="pos">Position of the vertex</param>
+    /// <param name="normal">Normal of the vertex</param>
+    /// <param name="color">Color of the vertex</param>
+    Vertex(const XMFLOAT3& pos, const XMFLOAT3& normal, const Color& color)
+        : m_Position(pos)
+        , m_Normal(normal)
+        , m_Color(color)
+    {
+    }
 };
 
 /// <summary>
@@ -97,25 +94,25 @@ struct Vertex
 /// </summary>
 struct OutPutVertex
 {
-	/// <summary>
-	/// Position of the Vertex in clip space
-	/// </summary>
-	XMFLOAT4 m_Position;
+    /// <summary>
+    /// Position of the Vertex in clip space
+    /// </summary>
+    XMFLOAT4 m_Position;
 
-	/// <summary>
-	/// Normal of the vertex
-	/// </summary>
-	XMFLOAT3 m_Normal;
+    /// <summary>
+    /// Normal of the vertex
+    /// </summary>
+    XMFLOAT3 m_Normal;
 
-	/// <summary>
-	/// Position of the Vertex in World Space
-	/// </summary>
-	XMFLOAT3 m_PositionWS;
+    /// <summary>
+    /// Position of the Vertex in World Space
+    /// </summary>
+    XMFLOAT3 m_PositionWS;
 
-	/// <summary>
-	/// Color of the Vertex
-	/// </summary>
-	Color m_Color;
+    /// <summary>
+    /// Color of the Vertex
+    /// </summary>
+    Color m_Color;
 };
 
 /// <summary>
@@ -123,25 +120,25 @@ struct OutPutVertex
 /// </summary>
 struct BoundingBox
 {
-	/// <summary>
-	/// Max X Pixel Position
-	/// </summary>
-	uint32_t m_MaxX = 0;
+    /// <summary>
+    /// Max X Pixel Position
+    /// </summary>
+    uint32_t m_MaxX = 0;
 
-	/// <summary>
-	/// Min X Pixel Position
-	/// </summary>
-	uint32_t m_MinX = 0;
+    /// <summary>
+    /// Min X Pixel Position
+    /// </summary>
+    uint32_t m_MinX = 0;
 
-	/// <summary>
-	/// Max Y Pixel Position
-	/// </summary>
-	uint32_t m_MaxY = 0;
+    /// <summary>
+    /// Max Y Pixel Position
+    /// </summary>
+    uint32_t m_MaxY = 0;
 
-	/// <summary>
-	/// Min Y Pixel Position
-	/// </summary>
-	uint32_t m_MinY = 0;
+    /// <summary>
+    /// Min Y Pixel Position
+    /// </summary>
+    uint32_t m_MinY = 0;
 };
 
 /// <summary>
@@ -149,30 +146,30 @@ struct BoundingBox
 /// </summary>
 struct Face
 {
-	/// <summary>
-	/// Output Vertex
-	/// </summary>
-	OutPutVertex m_Vertex[3];
+    /// <summary>
+    /// Output Vertex
+    /// </summary>
+    OutPutVertex m_Vertex[3];
 
-	/// <summary>
-	/// Color of the Face
-	/// </summary>
-	Color m_Color;
+    /// <summary>
+    /// Color of the Face
+    /// </summary>
+    Color m_Color;
 
-	/// <summary>
-	/// Bounding Box for the Face
-	/// </summary>
-	BoundingBox m_BoundingBox;
+    /// <summary>
+    /// Bounding Box for the Face
+    /// </summary>
+    BoundingBox m_BoundingBox;
 
-	/// <summary>
-	/// Area of the Face
-	/// </summary>
-	float m_Area = 0.0f;
+    /// <summary>
+    /// Area of the Face
+    /// </summary>
+    float m_Area = 0.0f;
 
-	/// <summary>
-	/// Is the face hidden from the camera
-	/// </summary>
-	bool m_Hidden = false;
+    /// <summary>
+    /// Is the face hidden from the camera
+    /// </summary>
+    bool m_Hidden = false;
 };
 
 #endif

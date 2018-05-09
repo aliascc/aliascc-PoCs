@@ -31,67 +31,67 @@
 class Timer
 {
 
-	private:
+    private:
 
-		/// <summary>
-		/// Elapsed Time since Last Frame
-		/// </summary>
-		double m_ElapsedTime = 0.0;
+        /// <summary>
+        /// Elapsed Time since Last Frame
+        /// </summary>
+        double m_ElapsedTime = 0.0;
 
-		/// <summary>
-		/// Total running time since the start of the Game App
-		/// </summary>
-		double m_TotalElapsedTime = 0.0;
+        /// <summary>
+        /// Total running time since the start of the Game App
+        /// </summary>
+        double m_TotalElapsedTime = 0.0;
 
-		/// <summary>
-		/// Keeps previous Time Stamp, to measure time between calls
-		/// </summary>
-		__int64 m_PrevTime = 0;
+        /// <summary>
+        /// Keeps previous Time Stamp, to measure time between calls
+        /// </summary>
+        __int64 m_PrevTime = 0;
 
-		/// <summary>
-		/// Stores the Freq of Counts per Second of the system
-		/// </summary>
-		double m_SecondPerCount = 0.0;
+        /// <summary>
+        /// Stores the Freq of Counts per Second of the system
+        /// </summary>
+        double m_SecondPerCount = 0.0;
 
-		/// <summary>
-		/// Gets the time Since last call. Works like a lap in a chronometer
-		/// </summary>
-		/// <param name="updatePrevTime">If true, updates Previous time with current time</param>
-		/// <returns>Returns time since last call and Previous time updated</returns>
-		double GetLapTime(bool updatePrevTime);
+        /// <summary>
+        /// Gets the time Since last call. Works like a lap in a chronometer
+        /// </summary>
+        /// <param name="updatePrevTime">If true, updates Previous time with current time</param>
+        /// <returns>Returns time since last call and Previous time updated</returns>
+        double GetLapTime(bool updatePrevTime);
 
-	public:
+    public:
 
-		/// <summary>
-		/// Timer Constructor
-		/// </summary>
-		Timer();
+        /// <summary>
+        /// Timer Constructor
+        /// </summary>
+        Timer();
 
-		/// <summary>
-		/// Timer Destructor
-		/// </summary>
-		~Timer();
+        /// <summary>
+        /// Timer Destructor
+        /// </summary>
+        ~Timer();
 
-		/// <summary>
-		/// Gets Elapsed Time since Last Frame
-		/// </summary>
-		inline float GetElapsedTime() const
-		{
-			return m_ElapsedTime;
-		}
+        /// <summary>
+        /// Gets Elapsed Time since Last Frame
+        /// </summary>
+        inline float GetElapsedTime() const
+        {
+            return m_ElapsedTime;
+        }
 
-		/// <summary>
-		/// Gets Total running time since the start of the Game App
-		/// </summary>
-		inline float GetTotalElapsedTime() const
-		{
-			return m_TotalElapsedTime;
-		}
+        /// <summary>
+        /// Gets Total running time since the start of the Game App
+        /// </summary>
+        inline float GetTotalElapsedTime() const
+        {
+            return m_TotalElapsedTime;
+        }
 
-		/// <summary>
-		/// Tells the Timer to update it self and all the properties
-		/// </summary>
-		void Update();
+        /// <summary>
+        /// Tells the Timer to update it self and all the properties
+        /// </summary>
+        void Update();
 };
 
 #endif

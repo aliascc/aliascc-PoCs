@@ -35,117 +35,117 @@
 /// </summary>
 struct Color
 {
-	/// <summary>
-	/// Color Vector
-	/// </summary>
-	XMFLOAT4 m_Color;
+    /// <summary>
+    /// Color Vector
+    /// </summary>
+    XMFLOAT4 m_Color;
 
-	/// <summary>
-	/// Color Constructor
-	/// </summary>
-	Color()
-		: m_Color(0.0f, 0.0f, 0.0f, 1.0f)
-	{
-	}
+    /// <summary>
+    /// Color Constructor
+    /// </summary>
+    Color()
+        : m_Color(0.0f, 0.0f, 0.0f, 1.0f)
+    {
+    }
 
-	/// <summary>
-	/// Color Constructor
-	/// </summary>
-	/// <param name="r">Red</param>
-	/// <param name="g">Green</param>
-	/// <param name="b">Blue</param>
-	/// <param name="a">Alfo</param>
-	Color(float r, float g, float b, float a)
-	{
-		m_Color = XMFLOAT4(b, g, r, a);
-	}
+    /// <summary>
+    /// Color Constructor
+    /// </summary>
+    /// <param name="r">Red</param>
+    /// <param name="g">Green</param>
+    /// <param name="b">Blue</param>
+    /// <param name="a">Alfo</param>
+    Color(float r, float g, float b, float a)
+    {
+        m_Color = XMFLOAT4(r, g, b, a);
+    }
 
-	/// <summary>
-	/// Cast Operator to uint32_t
-	/// </summary>
-	inline operator uint32_t() const
-	{
-		union
-		{
-			struct
-			{
-				uint8_t b;
-				uint8_t g;
-				uint8_t r;
-				uint8_t a;
-			};
-			uint32_t color;
-		} color;
+    /// <summary>
+    /// Cast Operator to uint32_t
+    /// </summary>
+    inline operator uint32_t() const
+    {
+        union
+        {
+            struct
+            {
+                uint8_t r;
+                uint8_t g;
+                uint8_t b;
+                uint8_t a;
+            };
+            uint32_t color;
+        } color;
 
-		color.r = static_cast<uint8_t>(clamp(m_Color.z * 255.0f, 0.0f, 255.0f));
-		color.g = static_cast<uint8_t>(clamp(m_Color.y * 255.0f, 0.0f, 255.0f));
-		color.b = static_cast<uint8_t>(clamp(m_Color.x * 255.0f, 0.0f, 255.0f));
-		color.a = static_cast<uint8_t>(clamp(m_Color.w * 255.0f, 0.0f, 255.0f));
+        color.r = static_cast<uint8_t>(clamp(m_Color.x * 255.0f, 0.0f, 255.0f));
+        color.g = static_cast<uint8_t>(clamp(m_Color.y * 255.0f, 0.0f, 255.0f));
+        color.b = static_cast<uint8_t>(clamp(m_Color.z * 255.0f, 0.0f, 255.0f));
+        color.a = static_cast<uint8_t>(clamp(m_Color.w * 255.0f, 0.0f, 255.0f));
 
-		return color.color;
-	}
+        return color.color;
+    }
 
-	/// <summary>
-	/// Multiplication with a Float Operator
-	/// </summary>
-	/// <param name="other">Float to multiply</param>
-	/// <returns>Resulting Color</returns>
-	inline Color operator*(float other) const
-	{
-		Color color;
+    /// <summary>
+    /// Multiplication with a Float Operator
+    /// </summary>
+    /// <param name="other">Float to multiply</param>
+    /// <returns>Resulting Color</returns>
+    inline Color operator*(float other) const
+    {
+        Color color;
 
-		XMVECTOR xmColor = XMLoadFloat4(&m_Color);
+        XMVECTOR xmColor = XMLoadFloat4(&m_Color);
 
-		XMStoreFloat4(&color.m_Color, (xmColor * other));
+        XMStoreFloat4(&color.m_Color, (xmColor * other));
 
-		return color;
-	}
+        return color;
+    }
 
-	/// <summary>
-	/// Addition with another Color Operator
-	/// </summary>
-	/// <param name="other">Color to add</param>
-	/// <returns>Resulting Color</returns>
-	inline Color operator+(const Color& other) const
-	{
-		Color color;
+    /// <summary>
+    /// Addition with another Color Operator
+    /// </summary>
+    /// <param name="other">Color to add</param>
+    /// <returns>Resulting Color</returns>
+    inline Color operator+(const Color& other) const
+    {
+        Color color;
 
-		XMVECTOR xmColor = XMLoadFloat4(&m_Color);
-		XMVECTOR xmOtherColor = XMLoadFloat4(&other.m_Color);
+        XMVECTOR xmColor = XMLoadFloat4(&m_Color);
+        XMVECTOR xmOtherColor = XMLoadFloat4(&other.m_Color);
 
-		XMStoreFloat4(&color.m_Color, (xmColor + xmOtherColor));
+        XMStoreFloat4(&color.m_Color, (xmColor + xmOtherColor));
 
-		return color;
-	}
+        return color;
+    }
 
-	/// <summary>
-	/// Multiplication with a Float Operator
-	/// </summary>
-	/// <param name="other">Float to multiply</param>
-	/// <returns>Resulting Color</returns>
-	inline Color& operator*=(float other)
-	{
-		XMVECTOR xmColor = XMLoadFloat4(&m_Color);
+    /// <summary>
+    /// Multiplication with a Float Operator
+    /// </summary>
+    /// <param name="other">Float to multiply</param>
+    /// <returns>Resulting Color</returns>
+    inline Color& operator*=(float other)
+    {
+        XMVECTOR xmColor = XMLoadFloat4(&m_Color);
 
-		XMStoreFloat4(&m_Color, (xmColor * other));
+        XMStoreFloat4(&m_Color, (xmColor * other));
 
-		return (*this);
-	}
+        return (*this);
+    }
 
-	/// <summary>
-	/// Addition with another Color Operator
-	/// </summary>
-	/// <param name="other">Color to add</param>
-	/// <returns>Resulting Color</returns>
-	inline Color& operator+=(const Color& other)
-	{
-		XMVECTOR xmColor = XMLoadFloat4(&m_Color);
-		XMVECTOR xmOtherColor = XMLoadFloat4(&other.m_Color);
+    /// <summary>
+    /// Addition with another Color Operator
+    /// </summary>
+    /// <param name="other">Color to add</param>
+    /// <returns>Resulting Color</returns>
+    inline Color& operator+=(const Color& other)
+    {
+        XMVECTOR xmColor = XMLoadFloat4(&m_Color);
+        XMVECTOR xmOtherColor = XMLoadFloat4(&other.m_Color);
 
-		XMStoreFloat4(&m_Color, (xmColor + xmOtherColor));
+        XMStoreFloat4(&m_Color, (xmColor + xmOtherColor));
 
-		return (*this);
-	}
+        return (*this);
+    }
 };
 
 #endif
